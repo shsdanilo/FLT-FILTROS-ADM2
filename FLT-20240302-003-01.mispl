@@ -1,0 +1,39 @@
+
+
+------ 
+•	Si resultado histórico de Albumina es 3.5 o mayor, evaluar delta de 7.8% para la albumina.
+•	Si el resultado histórico de albumina es menor a 3.5, evaluar un delta de 6.5% para la albumina.
+------
+
+
+--- condición de resultado histórico >3.5, y configura la variación delta 7.8%. 
+
+String testX;
+testX:="ALB";
+
+IF .GetRequest(0).GetLISPreviousLISResult(0).ResultValue > 3.5
+
+
+--- filtro inverso y variación 6.5%. ambos misma severidad y orden de evaluación.
+IF .GetRequest(0).GetLISPreviousLISResult(0).ResultValue < 3.5
+
+
+/*
+Implementar un delta con un filtro (Elegible) que tenga la condición de resultado histórico >3.5, y configura la variación delta 7.8%. y otro con el filtro inverso y variación 6.5%. ambos misma severidad y orden de evaluación.
+
+Hecho por: Danilo Castilla
+*/
+
+String testX;
+testX:="ALB";
+
+IF StringToFractional(.GetRequest(testX).GetLISPreviousResult(0).ResultValue) > 3.5 THEN
+RETURN TRUE;
+ENDIF;
+
+RETURN FALSE;
+
+----------------
+Comentario adicionado
+---------------
+
